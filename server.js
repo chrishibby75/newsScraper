@@ -15,7 +15,7 @@ var app = express();
 app.use(express.static("public"));
 
 //body parser for handling form submissions
-app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 var databaseUri = "mongodb://localhost/newsscraper";
 
@@ -26,15 +26,15 @@ if(process.env.MONGODB_URI) {
     mongoose.connect(process.env.MONGODB_URI);
 }
 else {
-    mongoose.connect(databaseURL);
+    mongoose.connect(databaseUri);
 }
 var db = mongoose.connection;
 
-db.on(error, function(err) {
+db.on("error", function(err) {
     console.log("Mongoose error: ", err)
 });
 
-db.once(open, function() {
+db.once("open", function() {
     console.log("Mongoose connection successful");
 });
 
