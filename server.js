@@ -17,13 +17,13 @@ app.use(express.static("public"));
 //body parser for handling form submissions
 app.use(bodyParser.urlencoded({ extended: false}));
 
-var databaseURL = "mongodb://localhost/newsscraper";
+var databaseUri = "mongodb://localhost/newsscraper";
 
 //set Mongoose to leverage built in Javascript ES6 promises
 //connect to MongoDB
 mongoose.Promise = Promise;
-if(process.env.MONGODB_URL) {
-    mongoose.connect(process.env.MONGODB_URL);
+if(process.env.MONGODB_URI) {
+    mongoose.connect(process.env.MONGODB_URI);
 }
 else {
     mongoose.connect(databaseURL);
