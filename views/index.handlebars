@@ -1,0 +1,18 @@
+{{#unless Article}}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>
+          Click "Scrape New Articles" to populate the list
+        </h3>
+    </div>
+</div>
+{{/unless}}
+
+
+<ul class = "articles">
+  {{#each Article}}
+    {{#unless saveArticle}}
+      {{> panels/notSaved-all }}
+    {{/unless}}
+  {{/each}}
+</ul>
