@@ -1,18 +1,54 @@
-{{#unless Article}}
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3>
-          Click "Scrape New Articles" to populate the list
-        </h3>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <a class="navbar-brand" href="/">Mongo News Scraper</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="/">Home
+                <span class="sr-only">(current)</span>
+            </a>
+            <a class="nav-item nav-link" href="/saved">Saved Articles</a>
+            <a href="/scrape" class="btn btn-danger active" role="button" aria-pressed="true">Scrape NYT</a>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+        <div class="jumbotron text-center background-image">
+            <div class="overlay">
+                <div class="caption">
+                    <h1 class="display-1 text-black">Mongo News Scraper</h1>
+                    <h2 class="text-black">NYT Edition</h2>
+                </div>
+            </div>
+        </div>
+    <div class=row>
+        <div class="col-12">
+            {{#if articles}}
+            {{#each articles}}
+                <div class="card w-90">
+                    <div class="card-header text-white bg-primary">
+                        <a href={{link}} target="_blank" class="text-white">
+                            <h2>{{title}}</h2>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            {{summary}}
+                        </p>
+                        <button id="{{_id}}" class="btn btn-primary save-btn">Save Article</button>
+                    </div>
+                </div>
+            {{/each}}
+            {{else}}
+                <div class="card text-white bg-info w-90 p-1">
+                    <div class="card-body text-center">
+                        Opps! There are no new articles at the time. 
+                    </div>
+                </div>
+            {{/if}}
+        </div>
     </div>
 </div>
-{{/unless}}
-
-
-<ul class = "articles">
-  {{#each Article}}
-    {{#unless saveArticle}}
-      {{> panels/notSaved-all }}
-    {{/unless}}
-  {{/each}}
-</ul>
