@@ -1,9 +1,9 @@
 // Dependencies
-var express = require("express");
-var bodyParser = require("body-parser"); //JSON responses
-var mongoose = require("mongoose"); //Mongo object modelling 
-var request = require("request"); //Makes http calls
-var cheerio = require("cheerio"); //Scraper
+const express = require("express");
+const bodyParser = require("body-parser"); //JSON responses
+const mongoose = require("mongoose"); //Mongo object modelling 
+const request = require("request"); //Makes http calls
+const cheerio = require("cheerio"); //Scraper
 
 // Require all models
 const db = require("./models");
